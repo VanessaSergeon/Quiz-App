@@ -15,6 +15,12 @@ angular.module('quizApp')
       'Karma'
     ];
     $scope.whatImOrderingBy = 'difficulty';
+    $scope.answersCorrect = 0;
+    $scope.addAnswer = function(question, optionValue){
+      if(optionValue === question.answer){
+        $scope.answersCorrect++;
+      }
+    };
     $scope.quiz = [
     {
       "q": "Who is the best ping pong player at FSA?",

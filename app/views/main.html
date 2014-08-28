@@ -18,10 +18,14 @@
       <div class="jumbotron question">
         <li ng-repeat="question in quiz | orderBy: whatImOrderingBy ">
           <strong>{{ $index + 1}} {{ question.q}}</strong>
-            <button ng-repeat="option in question.options">
+            <button ng-repeat="option in question.options"
+                    ng-click="addAnswer(question,option.value)">
               {{ option.value }}
             </button>
         </li>
+      </div>
+      <div class="jumbotron question">
+        <p>Number of Correct Answers: {{ answersCorrect }}</p>
       </div>
 
     </div><!-- /.container -->
