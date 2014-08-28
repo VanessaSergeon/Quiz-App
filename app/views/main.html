@@ -17,7 +17,7 @@
     <div class="container">
       <div class="jumbotron question">
         <li ng-repeat="question in quiz | orderBy: whatImOrderingBy ">
-          <strong>{{ question.q}}</strong>
+          <strong>{{ $index + 1}} {{ question.q}}</strong>
             <button ng-repeat="option in question.options">
               {{ option.value }}
             </button>
