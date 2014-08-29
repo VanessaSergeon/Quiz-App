@@ -14,13 +14,30 @@ angular.module('quizApp')
       'AngularJS',
       'Karma'
     ];
+
     $scope.whatImOrderingBy = 'difficulty';
     $scope.answersCorrect = 0;
+
     $scope.addAnswer = function(question, optionValue){
       if(optionValue === question.answer){
         $scope.answersCorrect++;
       }
     };
+
+    $scope.addOption = function(){
+      // will push added option to new question option key
+      $scope.newQuestion.options.push({value: ''});
+    };
+
+    $scope.newQuestion = {options: []};
+
+    $scope.submit = function() {
+      $scope.newQuestion.difficulty = +$scope.newQuestion.difficulty;
+      $scope.newQuestion.answer = +$scope.newQuestion.answer;
+      $scope.quiz.push($scope.newQuestion);
+      $scope.newQuestion = {options: []};
+    };
+
     $scope.quiz = [
     {
       "q": "Who is the best ping pong player at FSA?",

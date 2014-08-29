@@ -1,31 +1,39 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Quiz App</a>
-        </div>
-        <div class="collapse navbar-collapse">
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
     <div class="container">
       <div class="jumbotron question">
         <li ng-repeat="question in quiz | orderBy: whatImOrderingBy ">
           <strong>{{ $index + 1}} {{ question.q}}</strong>
+            <div class="btn-group">
             <button ng-repeat="option in question.options"
-                    ng-click="addAnswer(question,option.value)">
+                    ng-click="addAnswer(question,option.value)"
+                    class="btn btn-default">
               {{ option.value }}
             </button>
+            </div>
         </li>
       </div>
+
       <div class="jumbotron question">
-        <p>Number of Correct Answers: {{ answersCorrect }}</p>
+        <h2>Your Score is: {{ answersCorrect }}</h2>
+      </div>
+
+      <div class="jumbotron question">
+        <h2>Create New Question</h2>
+        <form>
+          <h3>Question</h3>
+          <textarea ng-model="newQuestion.q" class="form-control"></textarea>
+          <h3>Options</h3>
+          <input ng-repeat="option in newQuestion.options"
+                 ng-model="option.value"
+                 class="form-control" type="text">
+          <button ng-click="addOption()"
+                  class="form-control btn btn-primary">New Option</button>
+          <h3>Answer</h3>
+          <input ng-model="newQuestion.answer" class="form-control" type="text">
+          <h3>Difficulty</h3>
+          <input ng-model="newQuestion.difficulty" class="form-control" type="text">
+          <button ng-click="submit()"
+                  class="form-control btn btn-primary">Submit</button>
+        </form>
       </div>
 
     </div><!-- /.container -->
