@@ -33,7 +33,7 @@ angular.module('quizApp')
 
     $scope.submit = function() {
       $scope.newQuestion.difficulty = +$scope.newQuestion.difficulty;
-      $scope.newQuestion.answer = +$scope.newQuestion.answer;
+      $scope.newQuestion.answer = $scope.newQuestion.answer;
       $scope.quiz.push($scope.newQuestion);
       $scope.newQuestion = {options: []};
     };
