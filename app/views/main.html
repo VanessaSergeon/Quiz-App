@@ -1,4 +1,10 @@
-    <div class="container">
+    <div ng-controller="QuizCtrl">
+    <div class="container question">
+
+      <div class="jumbotron">
+        <h2>{{ count }} Seconds left!</h2>
+      </div>
+
       <div class="jumbotron question">
         <li ng-repeat="question in quiz | orderBy: whatImOrderingBy ">
           <strong>{{ $index + 1}} {{ question.q}}</strong>
@@ -37,6 +43,7 @@
       </div>
 
     </div><!-- /.container -->
+    </div>
 
 
     <!-- Bootstrap core JavaScript
